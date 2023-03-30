@@ -1,5 +1,7 @@
 from flask import Flask, jsonify, request
 app = Flask(__name__)
+import json
+decoded_object = json.loads(original_string)
 
 todos = [ { "label": "My first task", "done": False } ]
 
@@ -26,12 +28,10 @@ def one():
 @app.route('/todos', methods=['POST'])
 def add_new_todo():
     request_body = request.json
+    todos.append(todos)
     print("Incoming request with the following body", request_body)
-    todos.append(request_body)
     json_text = jsonify(todos)
     return json_text
-
-
 
 
 # These two lines should always be at the end of your app.py file.
